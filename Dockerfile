@@ -15,8 +15,8 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY src/NetStandardTestApp.sln .
-COPY src/NetStandardTestApp/*.*.csproj ./NetStandardTestApp/
-COPY src/NetStandardTestApp.Tests/*.*.csproj ./NetStandardTestApp.Tests/
+COPY src/NetStandardTestApp/*.csproj ./NetStandardTestApp/
+COPY src/NetStandardTestApp.Tests/*.csproj ./NetStandardTestApp.Tests/
 	
 RUN dotnet restore
 
