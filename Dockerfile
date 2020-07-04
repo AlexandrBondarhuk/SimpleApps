@@ -21,8 +21,8 @@ COPY src/NetStandardTestApp.Tests/*.csproj ./NetStandardTestApp.Tests/
 RUN dotnet restore
 
 # copy everything else and build app
-COPY NetStandardTestApp/. ./NetStandardTestApp/
-COPY NetStandardTestApp.Tests/. ./NetStandardTestApp.Tests/
+COPY src/NetStandardTestApp/. ./NetStandardTestApp/
+COPY src/NetStandardTestApp.Tests/. ./NetStandardTestApp.Tests/
 
 WORKDIR /app/NetStandardTestApp
 
