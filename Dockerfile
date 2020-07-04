@@ -14,7 +14,7 @@ WORKDIR /app
 #########################################
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
+COPY src/NetStandardTestApp.sln .
 COPY src/NetStandardTestApp/*.*.csproj ./NetStandardTestApp/
 COPY src/NetStandardTestApp.Tests/*.*.csproj ./NetStandardTestApp.Tests/
 	
