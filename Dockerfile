@@ -26,8 +26,11 @@ COPY src/NetStandardTestApp.Tests/. ./NetStandardTestApp.Tests/
 
 WORKDIR /app/NetStandardTestApp
 
+RUN dotnet publish -c Release -o out
+
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
-COPY --from=build /app ./
+#COPY --from=build /app ./
+COPY --from=build /app/NetStandardTestApp/out ./
 ENTRYPOINT ["dotnet", "NetStandardTestApp.dll"]
