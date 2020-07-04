@@ -30,7 +30,10 @@ RUN dotnet publish -c Release -o out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
-WORKDIR /app
+#WORKDIR /app
 #COPY --from=build /app ./
-COPY --from=build /app/NetStandardTestApp/out ./
-ENTRYPOINT ["dotnet", "NetStandardTestApp.dll"]
+#COPY --from=build /app/NetStandardTestApp/out ./
+#ENTRYPOINT ["dotnet", "NetStandardTestApp.dll"]
+WORKDIR /app
+COPY --from=build /app .
+ENTRYPOINT ["./dotnetapp"]
