@@ -29,5 +29,5 @@ WORKDIR /app/NetStandardTestApp
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build /app/NetStandardTestApp/out ./
 ENTRYPOINT ["dotnet", "NetStandardTestApp.dll"]
