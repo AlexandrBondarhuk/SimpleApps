@@ -5,7 +5,7 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 
 COPY src/*.sln .
-COPY Sources/NetCoreWebApp/*.csproj ./NetCoreWebApp/
+COPY src/NetCoreWebApp/*.csproj ./NetCoreWebApp/
 
 
 RUN dotnet restore
