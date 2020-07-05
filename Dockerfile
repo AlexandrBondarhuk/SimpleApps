@@ -5,7 +5,7 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 
 COPY src/*.sln .
-COPY Sources/Reinder.Mapping.Core/*.csproj ./Reinder.Mapping.Core/
+COPY Sources/NetCoreWebApp/*.csproj ./NetCoreWebApp/
 
 
 RUN dotnet restore
