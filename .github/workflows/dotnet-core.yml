@@ -18,6 +18,6 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Install dependencies
-      run: dotnet restore src/NetStandardTestApp.sln
+      run: dotnet restore testwebapp.sln
     - name: Build
-      run: dotnet build src/NetStandardTestApp.sln --configuration Release --no-restore
+      run: dotnet build testwebapp.sln --configuration Release --no-restore
