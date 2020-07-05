@@ -21,5 +21,3 @@ jobs:
       run: dotnet restore src/NetStandardTestApp.sln
     - name: Build
       run: dotnet build src/NetStandardTestApp.sln --configuration Release --no-restore
-    - name: Test
-      run: dotnet test src/NetStandardTestApp.Tests/NetStandardTestApp.Tests.csproj --no-restore --verbosity normal
