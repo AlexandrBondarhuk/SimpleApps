@@ -1,19 +1,24 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+# https://hub.docker.com/_/microsoft-dotnet-core
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY src/NetStandardTestApp.sln .
-COPY src/NetStandardTestApp/*.csproj ./NetStandardTestApp/
-COPY src/NetStandardTestApp.Tests/*.csproj ./NetStandardTestApp.Tests/	
+
+COPY src/*.sln .
+COPY Sources/Reinder.Mapping.Core/*.csproj ./Reinder.Mapping.Core/
+
+
 RUN dotnet restore
 
 # copy everything else and build app
-COPY . .
+COPY src/NetCoreWebApp/. ./NetCoreWebApp/
 
+
+WORKDIR /source/NetCoreWebApp/
 RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1
 WORKDIR /app
 COPY --from=build /app .
-ENTRYPOINT ["dotnet", "dotnetapp.dll"]
+ENTRYPOINT ["dotnet", "netcorewebapp.dll"]
